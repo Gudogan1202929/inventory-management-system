@@ -46,7 +46,7 @@ public class SupplyingCompanyServies {
         if (supplyingCompanyFound == null) {
             throw new IllegalStateException("supplying Company with id " + supplyingCompany.getId() + " does not exist");
         }
-        supplyingCompanyRepo.save(supplyingCompanyFound);
+        supplyingCompanyRepo.save(supplyingCompany);
     }
 
     @Transactional

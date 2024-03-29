@@ -58,7 +58,8 @@ public class ItemController {
     public ResponseEntity<?> deleteItem(@PathVariable(required = true) int id){
         try {
             itemServies.DeleteItem(id);
-            return ResponseEntity.status(HttpStatus.NO_CONTENT).body("Item deleted successfully");
+//            return ResponseEntity.status(HttpStatus.NO_CONTENT).body("Item deleted successfully");
+            return ResponseEntity.ok().body("Item deleted successfully");
         } catch (Exception e) {
             return ResponseEntity.badRequest().body("An error occurred: " + e.getMessage());
         }

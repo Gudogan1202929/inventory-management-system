@@ -39,7 +39,8 @@ public class DistributorsController {
     public ResponseEntity<?> deleteDistributorsById(@PathVariable(required = true) int id) {
         try {
             distributorsServies.DeleteDistributor(id);
-            return ResponseEntity.status(HttpStatus.NO_CONTENT).body("Distributor with id " + id + " deleted successfully");
+//            return ResponseEntity.status(HttpStatus.NO_CONTENT).body("Distributor with id " + id + " deleted successfully");
+            return ResponseEntity.ok().body("Distributor deleted successfully");
         } catch (Exception e) {
             return ResponseEntity.badRequest().body("Error: " + e.getMessage());
         }

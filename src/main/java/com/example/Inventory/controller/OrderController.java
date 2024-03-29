@@ -50,7 +50,8 @@ public class OrderController {
     public ResponseEntity<?> DeleteOrder(int id) {
         try {
             orderServies.DeleteOrder(id);
-            return ResponseEntity.status(HttpStatus.NO_CONTENT).body("Order Deleted Successfully");
+            return ResponseEntity.ok().body("Order deleted successfully");
+//            return ResponseEntity.status(HttpStatus.NO_CONTENT).body("Order Deleted Successfully");
         }catch (Exception e){
             return ResponseEntity.badRequest().body("Error : " + e.getMessage());
         }

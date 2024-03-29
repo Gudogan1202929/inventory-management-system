@@ -50,11 +50,13 @@ public class ItemServies {
 
     @Transactional
     public void UpdateItem(Item item) throws IllegalStateException{
+        System.out.println(item.toString());
         Item itemFound = itemRepo.findById(item.getId()).orElse(null);
+        System.out.println(itemFound.toString());
         if (itemFound == null) {
             throw new IllegalStateException("Item with id " + item.getId() + " does not exist");
         }
-        itemRepo.save(itemFound);
+        itemRepo.save(item);
     }
 
     @Transactional

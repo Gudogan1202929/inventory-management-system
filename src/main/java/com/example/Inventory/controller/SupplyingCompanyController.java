@@ -49,7 +49,8 @@ public class SupplyingCompanyController {
     public ResponseEntity<?> deleteSupplyingCompany(@PathVariable (required = true) int id) {
         try {
             supplyingCompanyServies.DeleteSupplyingCompany(id);
-            return ResponseEntity.status(HttpStatus.NO_CONTENT).body("Supplying Company Deleted Successfully");
+            return ResponseEntity.ok().body("supplier deleted successfully");
+//            return ResponseEntity.status(HttpStatus.NO_CONTENT).body("Supplying Company Deleted Successfully");
         } catch (Exception e) {
             return ResponseEntity.badRequest().body("Error :"+e.getMessage());
         }

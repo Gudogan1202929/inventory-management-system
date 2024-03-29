@@ -128,9 +128,6 @@ public class Item {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", quantity=" + quantity +
-                ", price=" + price +
-                ", orders=" + orders +
-                ", supplyingCompany=" + supplyingCompany +
-                '}';
+                ", price=" + price;
     }
 }

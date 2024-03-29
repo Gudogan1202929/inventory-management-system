@@ -65,4 +65,15 @@ public class OrderController {
             return ResponseEntity.badRequest().body("Error : " + e.getMessage());
         }
     }
+
+
+    @PutMapping("/order/{orderId}/add/distributor/{distributorId}")
+    public ResponseEntity<?> AddDistributorToOrder(@PathVariable int orderId, @PathVariable int distributorId) {
+        try {
+            orderServies.setDistributorInOrder(orderId, distributorId);
+            return ResponseEntity.ok().body("Distributor added to order successfully");
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body("An error occurred: " + e.getMessage());
+        }
+    }
 }

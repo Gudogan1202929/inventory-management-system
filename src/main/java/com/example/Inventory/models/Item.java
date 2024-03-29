@@ -1,5 +1,6 @@
 package com.example.Inventory.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -34,15 +35,18 @@ public class Item {
             nullable = false)
     private double price;
 
+    @JsonIgnore
     @ManyToMany
     @JoinTable(
             name = "items_orders",
             joinColumns = @JoinColumn(name = "item_id"),
-            inverseJoinColumns = @JoinColumn(name = "order_id"))
+            inverseJoinColumns = @JoinColumn(name = "order_id")
+    )
     private List<Order> orders = new ArrayList<>();
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, targetEntity = SupplyingCompany.class, cascade = CascadeType.ALL)
     @JoinColumn(name = "supplying_company_fk", referencedColumnName = "id")
+    @JsonIgnore
     private SupplyingCompany supplyingCompany;
 
     public Item(String name, int quantity, double price, SupplyingCompany supplyingCompany) {

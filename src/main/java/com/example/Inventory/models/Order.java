@@ -1,5 +1,6 @@
 package com.example.Inventory.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -21,17 +22,13 @@ public class Order {
             allocationSize = 1)
     private int id;
 
-    @Column(name = "quantity",
-            columnDefinition = "Integer",
-            nullable = false)
-    private int quantity;
-
     @Enumerated(EnumType.STRING)
     @Column(name = "status",
             columnDefinition = "TEXT",
             nullable = false)
     private OrderStatus status;
 
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     private Distributors distributors;
 
@@ -43,34 +40,32 @@ public class Order {
             nullable = false)
     Date date = new Date();
 
+
+
     public Order() {
     }
 
-    public Order(int id, int quantity, OrderStatus status, List<Item> item, Date date) {
+    public Order(int id,OrderStatus status, List<Item> item, Date date) {
         this.id = id;
-        this.quantity = quantity;
         this.status = status;
         this.item = item;
         this.date = date;
     }
 
-    public Order(int id, int quantity, OrderStatus status, Distributors distributors, List<Item> item, Date date) {
+    public Order(int id, OrderStatus status, Distributors distributors, List<Item> item, Date date) {
         this.id = id;
-        this.quantity = quantity;
         this.status = status;
         this.distributors = distributors;
         this.item = item;
         this.date = date;
     }
 
-    public Order(int quantity, OrderStatus status, Date date) {
-        this.quantity = quantity;
+    public Order( OrderStatus status, Date date) {
         this.status = status;
         this.date = date;
     }
 
-    public Order(int quantity, OrderStatus status, Date date , Distributors distributors) {
-        this.quantity = quantity;
+    public Order(OrderStatus status, Date date , Distributors distributors) {
         this.status = status;
         this.distributors = distributors;
         this.date = date;
@@ -82,14 +77,6 @@ public class Order {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
     }
 
     public OrderStatus getStatus() {
@@ -116,11 +103,18 @@ public class Order {
         this.date = date;
     }
 
+    public Distributors getDistributors() {
+        return distributors;
+    }
+
+    public void setDistributors(Distributors distributors) {
+        this.distributors = distributors;
+    }
+
     @Override
     public String toString() {
         return "Order{" +
                 "id=" + id +
-                ", quantity=" + quantity +
                 ", status=" + status +
                 ", item=" + item +
                 ", date=" + date +

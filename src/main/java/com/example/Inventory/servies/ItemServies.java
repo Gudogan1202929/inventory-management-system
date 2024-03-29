@@ -2,9 +2,12 @@ package com.example.Inventory.servies;
 
 import com.example.Inventory.models.Item;
 import com.example.Inventory.models.Order;
+import com.example.Inventory.models.SupplyingCompany;
 import com.example.Inventory.repo.ItemRepo;
 import com.example.Inventory.repo.OrderRepo;
+import com.example.Inventory.repo.SupplyingCompanyRepo;
 import jakarta.transaction.Transactional;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
 
@@ -15,8 +18,15 @@ public class ItemServies {
 
     private final ItemRepo itemRepo;
 
-    public ItemServies(ItemRepo itemRepo) {
+    private final SupplyingCompanyRepo supplyingCompanyRepo;
+
+    private final OrderRepo orderRepo;
+
+    @Autowired
+    public ItemServies(ItemRepo itemRepo , SupplyingCompanyRepo supplyingCompanyRepo ,OrderRepo orderRepo) {
         this.itemRepo = itemRepo;
+        this.supplyingCompanyRepo = supplyingCompanyRepo;
+        this.orderRepo = orderRepo;
     }
 
     @Transactional
@@ -62,5 +72,19 @@ public class ItemServies {
             throw new RuntimeException("No Item found");
         }
         return itemRepo.findAll();
+    }
+
+    @Transactional
+    public void supplyedBy( int ItemId ,int SupplyerId) {
+        Item item = itemRepo.findById(ItemId).orElse(null);
+        SupplyingCompany supplyingCompany = supplyingCompanyRepo.findById(SupplyerId).orElse(null);
+        if (item == null) {
+            throw new IllegalStateException("Item with id " + ItemId + " does not exist");
+        }
+        if (supplyingCompany == null) {
+            throw new IllegalStateException("Suppler with id " + SupplyerId + " does not exist");
+        }
+        item.setSupplyingCompany(supplyingCompany);
+        itemRepo.save(item);
     }
 }

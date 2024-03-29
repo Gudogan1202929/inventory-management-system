@@ -1,5 +1,6 @@
 package com.example.Inventory.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -39,6 +40,7 @@ public class Distributors {
             columnDefinition = "TEXT")
     private String email;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "distributors" ,cascade = CascadeType.ALL)
     private List<Order> orders = new ArrayList<>();
 

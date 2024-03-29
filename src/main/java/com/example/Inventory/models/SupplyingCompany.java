@@ -1,5 +1,6 @@
 package com.example.Inventory.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -55,6 +56,14 @@ public class SupplyingCompany {
         this.location = location;
         this.email = email;
         this.items = items;
+    }
+
+    public SupplyingCompany(int id, String companyName, String phoneNumber, String location, String email) {
+        this.id = id;
+        this.companyName = companyName;
+        this.phoneNumber = phoneNumber;
+        this.location = location;
+        this.email = email;
     }
 
     public SupplyingCompany() {

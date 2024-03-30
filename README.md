@@ -54,4 +54,11 @@ SupplyingCompany:
 
 ![image](https://github.com/Gudogan1202929/inventory-management-system/assets/106726780/57b2c73c-9115-4c8c-a5d8-11c17d48a10e)
 
+![image2](https://github.com/Gudogan1202929/inventory-management-system/assets/106726780/7070ee21-c4d6-449d-94a7-29e70157fec3)
+
+![image3](https://github.com/Gudogan1202929/inventory-management-system/assets/106726780/fa7950d6-3897-467a-9f2c-2905d2104015)
+
+
+
+
 [REST API basics- CRUD, test & variable.postman_collection.json](https://github.com/Gudogan1202929/inventory-management-system/files/14809096/REST.API.basics-.CRUD.test.variable.postman_collection.json)

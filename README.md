@@ -58,6 +58,19 @@ SupplyingCompany:
 
 ![image3](https://github.com/Gudogan1202929/inventory-management-system/assets/106726780/fa7950d6-3897-467a-9f2c-2905d2104015)
 
+![1](https://github.com/Gudogan1202929/inventory-management-system/assets/106726780/3d3a8c96-b7db-459c-b950-b35400f8026a)
+
+![2](https://github.com/Gudogan1202929/inventory-management-system/assets/106726780/50b60ff1-906c-40f3-b802-95f1aca4e12c)
+
+![3](https://github.com/Gudogan1202929/inventory-management-system/assets/106726780/37ca1958-af9f-49f3-afae-66ef51f2fb42)
+
+![4](https://github.com/Gudogan1202929/inventory-management-system/assets/106726780/b77eb4f5-2d8f-400b-aba9-cc8458debb5b)
+
+![5](https://github.com/Gudogan1202929/inventory-management-system/assets/106726780/c6c4f76e-981b-4911-a431-755b9627bc9b)
+
+![6](https://github.com/Gudogan1202929/inventory-management-system/assets/106726780/c593bf68-06f0-4bed-b8ef-86a93e8b447d)
+
+![7](https://github.com/Gudogan1202929/inventory-management-system/assets/106726780/379cfdee-3816-43c4-97c5-437e02e0a503)
 
 
 

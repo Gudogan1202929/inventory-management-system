@@ -1,7 +1,6 @@
 package com.example.Inventory.controller;
 
 import com.example.Inventory.models.Item;
-import com.example.Inventory.repo.OrderRepo;
 import com.example.Inventory.servies.ItemServies;
 import com.example.Inventory.servies.OrderServies;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -85,7 +84,7 @@ public class ItemController {
         }
     }
 
-    @GetMapping("/order/{orderId}/item/{itemId}")
+    @PutMapping("/order/{orderId}/item/{itemId}")
     public ResponseEntity<?> setItemInOrder(@PathVariable(required = true) int orderId, @PathVariable(required = true) int itemId) {
         try {
             orderServies.setItemInOrder(orderId, itemId);

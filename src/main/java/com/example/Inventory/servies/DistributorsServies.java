@@ -28,7 +28,6 @@ public class DistributorsServies {
         }
     }
 
-
     @Transactional
     public void DeleteDistributor(int id) throws IllegalStateException{
         boolean exists = distributorsRepository.existsById(id);

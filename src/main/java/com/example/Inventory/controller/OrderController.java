@@ -8,8 +8,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@RequestMapping("/order")
 public class OrderController {
-
 
     private final OrderServies orderServies;
 
@@ -18,7 +18,7 @@ public class OrderController {
         this.orderServies = orderServies;
     }
 
-    @GetMapping("/order/retrive")
+    @GetMapping("/retrive")
     public ResponseEntity<?> RetriveOrder() {
         try {
             return ResponseEntity.ok().body(orderServies.GetAllOrder());
@@ -27,7 +27,7 @@ public class OrderController {
         }
     }
 
-    @GetMapping("/order/retrive/{id}")
+    @GetMapping("/retrive/{orderId}")
     public ResponseEntity<?> RetriveOrder(int id) {
         try {
             return ResponseEntity.ok().body(orderServies.GetOrder(id));
@@ -36,7 +36,7 @@ public class OrderController {
         }
     }
 
-    @PutMapping("/order/update")
+    @PutMapping("/update")
     public ResponseEntity<?> UpdateOrder(@RequestBody Order order) {
         try {
             orderServies.UpdateOrder(order);
@@ -46,18 +46,17 @@ public class OrderController {
         }
     }
 
-    @DeleteMapping("/order/delete/{id}")
-    public ResponseEntity<?> DeleteOrder(int id) {
+    @DeleteMapping("/delete/{orderId}")
+    public ResponseEntity<?> DeleteOrder(@PathVariable int orderId) {
         try {
-            orderServies.DeleteOrder(id);
-            return ResponseEntity.ok().body("Order deleted successfully");
-//            return ResponseEntity.status(HttpStatus.NO_CONTENT).body("Order Deleted Successfully");
+            orderServies.DeleteOrder(orderId);
+            return ResponseEntity.status(HttpStatus.NO_CONTENT).body("Order Deleted Successfully");
         }catch (Exception e){
             return ResponseEntity.badRequest().body("Error : " + e.getMessage());
         }
     }
 
-    @PostMapping("/order/add")
+    @PostMapping("/add")
     public ResponseEntity<?> AddOrder(@RequestBody Order order) {
         try {
             orderServies.AddNewOrder(order);
@@ -68,7 +67,7 @@ public class OrderController {
     }
 
 
-    @PutMapping("/order/{orderId}/add/distributor/{distributorId}")
+    @PutMapping("/{orderId}/for/distributor/{distributorId}")
     public ResponseEntity<?> AddDistributorToOrder(@PathVariable int orderId, @PathVariable int distributorId) {
         try {
             orderServies.setDistributorInOrder(orderId, distributorId);

@@ -63,8 +63,6 @@ public class Distributors {
         this.orders = orders;
     }
 
-
-
     public int getId() {
         return id;
     }

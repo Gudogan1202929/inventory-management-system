@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@RequestMapping("/distributors")
 public class DistributorsController {
 
     private final DistributorsServies distributorsServies;
@@ -17,7 +18,7 @@ public class DistributorsController {
         this.distributorsServies = distributorsServies;
     }
 
-    @GetMapping("/retrive/distributors")
+    @GetMapping("/retrive")
     public ResponseEntity<?> retriveDistributors() {
         try {
             return ResponseEntity.ok().body(distributorsServies.GetAllDistributors());
@@ -26,7 +27,7 @@ public class DistributorsController {
         }
     }
 
-    @GetMapping("/retrive/distributors/{id}")
+    @GetMapping("/retrive/{id}")
     public ResponseEntity<?> retriveDistributorsById(@PathVariable(required = true) int id) {
         try {
             return ResponseEntity.ok().body(distributorsServies.GetDistributor(id));
@@ -35,18 +36,17 @@ public class DistributorsController {
         }
     }
 
-    @DeleteMapping("/delete/distributors/{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<?> deleteDistributorsById(@PathVariable(required = true) int id) {
         try {
             distributorsServies.DeleteDistributor(id);
-//            return ResponseEntity.status(HttpStatus.NO_CONTENT).body("Distributor with id " + id + " deleted successfully");
-            return ResponseEntity.ok().body("Distributor deleted successfully");
+            return ResponseEntity.status(HttpStatus.NO_CONTENT).body("Distributor with id " + id + " deleted successfully");
         } catch (Exception e) {
             return ResponseEntity.badRequest().body("Error: " + e.getMessage());
         }
     }
 
-    @PutMapping("/update/distributors")
+    @PutMapping("/update")
     public ResponseEntity<?> updateDistributors(@RequestBody Distributors distributor) {
         try {
             distributorsServies.UpdateDistributor(distributor);
@@ -56,7 +56,7 @@ public class DistributorsController {
         }
     }
 
-    @PostMapping("/add/distributors")
+    @PostMapping("/add")
     public ResponseEntity<?> addDistributors(@RequestBody Distributors distributor) {
         try {
             System.out.println(distributor.toString());

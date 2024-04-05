@@ -11,10 +11,9 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping("/item")
 public class ItemController {
-
     private final ItemServies itemServies;
-
     private final OrderServies orderServies;
 
     @Autowired
@@ -23,7 +22,7 @@ public class ItemController {
         this.orderServies = orderServies;
     }
 
-    @GetMapping("/item/retrieve")
+    @GetMapping("/retrive")
     public ResponseEntity<?> retrieveItem() {
         try {
             List<Item> items = itemServies.GetAllItem();
@@ -33,7 +32,7 @@ public class ItemController {
         }
     }
 
-    @PostMapping("/item/add")
+    @PostMapping("/add")
     public ResponseEntity<?> addItem(@RequestBody Item item) {
         try {
             itemServies.AddNewItem(item);
@@ -43,7 +42,7 @@ public class ItemController {
         }
     }
 
-    @PutMapping("/item/update")
+    @PutMapping("/update")
     public ResponseEntity<?> updateItem(@RequestBody Item item) {
         try {
             itemServies.UpdateItem(item);
@@ -53,41 +52,40 @@ public class ItemController {
         }
     }
 
-    @DeleteMapping("/item/delete/{id}")
-    public ResponseEntity<?> deleteItem(@PathVariable(required = true) int id){
+    @DeleteMapping("/delete/{itemId}")
+    public ResponseEntity<?> deleteItem(@PathVariable(required = true) int itemId){
         try {
-            itemServies.DeleteItem(id);
-//            return ResponseEntity.status(HttpStatus.NO_CONTENT).body("Item deleted successfully");
-            return ResponseEntity.ok().body("Item deleted successfully");
+            itemServies.DeleteItem(itemId);
+            return ResponseEntity.status(HttpStatus.NO_CONTENT).body("Item deleted successfully");
         } catch (Exception e) {
             return ResponseEntity.badRequest().body("An error occurred: " + e.getMessage());
         }
     }
 
-    @GetMapping("/item/retrieve/{id}")
-    public ResponseEntity<?> retrieveItemById(@PathVariable(required = true) int id) {
+    @GetMapping("/retrive/{itemId}")
+    public ResponseEntity<?> retrieveItemById(@PathVariable(required = true) int itemId) {
         try {
-            Item item = itemServies.GetItem(id);
+            Item item = itemServies.GetItem(itemId);
             return ResponseEntity.ok().body(item);
         } catch (Exception e) {
             return ResponseEntity.badRequest().body("An error occurred: " + e.getMessage());
         }
     }
 
-    @PutMapping("/item/{itemId}/supplyed/by/{supplyingCompanyId}")
-    public ResponseEntity<?> suppliedBy(@PathVariable(required = true) int itemId, @PathVariable(required = true) int supplyingCompanyId) {
+    @PutMapping("/{itemId}/supplyed/by/{supplierId}")
+    public ResponseEntity<?> suppliedBy(@PathVariable(required = true) int itemId, @PathVariable(required = true) int supplierId) {
         try {
-            itemServies.supplyedBy(itemId, supplyingCompanyId);
+            itemServies.supplyedBy(itemId, supplierId);
             return ResponseEntity.ok().body("Item supplied successfully");
         } catch (Exception e) {
             return ResponseEntity.badRequest().body("An error occurred: " + e.getMessage());
         }
     }
 
-    @PutMapping("/order/{orderId}/item/{itemId}")
-    public ResponseEntity<?> setItemInOrder(@PathVariable(required = true) int orderId, @PathVariable(required = true) int itemId) {
+    @PutMapping("/{itemId}/to/order/{OrderId}")
+    public ResponseEntity<?> setItemInOrder(@PathVariable(required = true) int OrderId, @PathVariable(required = true) int itemId) {
         try {
-            orderServies.setItemInOrder(orderId, itemId);
+            orderServies.setItemInOrder(OrderId, itemId);
             return ResponseEntity.ok().body("Item added to order successfully");
         } catch (Exception e) {
             return ResponseEntity.badRequest().body("An error occurred: " + e.getMessage());

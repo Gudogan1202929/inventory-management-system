@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@RequestMapping("/supplying/company")
 public class SupplyingCompanyController {
 
     private final SupplyingCompanyServies supplyingCompanyServies;
@@ -17,7 +18,7 @@ public class SupplyingCompanyController {
         this.supplyingCompanyServies = supplyingCompanyServies;
     }
 
-    @GetMapping("/retrive/supplying/company")
+    @GetMapping("/retrive")
     public ResponseEntity<?> getSupplyingCompany() {
         try {
             return ResponseEntity.ok().body(supplyingCompanyServies.GetAllSupplyingCompany());
@@ -26,7 +27,7 @@ public class SupplyingCompanyController {
         }
     }
 
-    @GetMapping("/retrive/supplying/company/{id}")
+    @GetMapping("/retrive/{id}")
     public ResponseEntity<?> getSupplyingCompanyById(@PathVariable (required = true) int id) {
         try {
             return ResponseEntity.ok().body(supplyingCompanyServies.GetSupplyingCompany(id));
@@ -35,7 +36,7 @@ public class SupplyingCompanyController {
         }
     }
 
-    @PutMapping("/update/supplying/company")
+    @PutMapping("/update")
     public ResponseEntity<?> updateSupplyingCompany(@RequestBody SupplyingCompany supplyingCompany) {
         try {
             supplyingCompanyServies.UpdateSupplyingCompany(supplyingCompany);
@@ -45,18 +46,17 @@ public class SupplyingCompanyController {
         }
     }
 
-    @DeleteMapping("/delete/supplying/company/{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<?> deleteSupplyingCompany(@PathVariable (required = true) int id) {
         try {
             supplyingCompanyServies.DeleteSupplyingCompany(id);
-            return ResponseEntity.ok().body("supplier deleted successfully");
-//            return ResponseEntity.status(HttpStatus.NO_CONTENT).body("Supplying Company Deleted Successfully");
+            return ResponseEntity.status(HttpStatus.NO_CONTENT).body("Supplying Company Deleted Successfully");
         } catch (Exception e) {
             return ResponseEntity.badRequest().body("Error :"+e.getMessage());
         }
     }
 
-    @PostMapping("/add/supplying/company")
+    @PostMapping("/add")
     public ResponseEntity<?> addSupplyingCompany(@RequestBody SupplyingCompany supplyingCompany) {
         try {
             supplyingCompanyServies.AddNewSupplyingCompany(supplyingCompany);

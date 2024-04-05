@@ -1,4 +1,5 @@
 # inventory-management-system
+
 inventory management system for managing the inventory from distributors , suppliers ,orders and items with APIs for controlling all the entities and the relations
 
 invintory mangment system to mange our inventory contain 4 core intities with add APIs to mange it from add, update, delete, retrive and APIs for relations:
@@ -46,14 +47,16 @@ SupplyingCompany:
               companyName: Name of the supplying company.
               phoneNumber: Phone number of the supplying company.
               location: Location of the supplying company.
+              
 
 ![image](https://github.com/Gudogan1202929/inventory-management-system/assets/106726780/57b2c73c-9115-4c8c-a5d8-11c17d48a10e)
 
+
 https://app.swaggerhub.com/apis/MOHAMMADNMOSLEH123/inventory-manegment_system_open_api_3_0/1.0.11-oas3.1#/
+
 
 https://docs.google.com/document/d/12HoYUR2xIl385S2lZjXxbPg81MvmU96Xt4jWaHD5JY4/edit?usp=sharing
 
-[REST API basics- CRUD, test & variable.postman_collection.json]
 
 https://github.com/Gudogan1202929/inventory-management-system/files/14886875/REST.API.basics-.CRUD.test.variable.postman_collection.json
 

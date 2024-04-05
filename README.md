@@ -56,4 +56,6 @@ SupplyingCompany:
 
 https://app.swaggerhub.com/apis/MOHAMMADNMOSLEH123/inventory-manegment_system_open_api_3_0/1.0.11-oas3.1#/
 
+https://docs.google.com/document/d/12HoYUR2xIl385S2lZjXxbPg81MvmU96Xt4jWaHD5JY4/edit?usp=sharing
+
 [REST API basics- CRUD, test & variable.postman_collection.json](https://github.com/Gudogan1202929/inventory-management-system/files/14809096/REST.API.basics-.CRUD.test.variable.postman_collection.json)

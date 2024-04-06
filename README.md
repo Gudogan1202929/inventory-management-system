@@ -57,9 +57,8 @@ https://app.swaggerhub.com/apis/MOHAMMADNMOSLEH123/inventory-manegment_system_op
 
 Table for clarify every API on the system and every thing about it :
 
-https://docs.google.com/document/d/12HoYUR2xIl385S2lZjXxbPg81MvmU96Xt4jWaHD5JY4/edit?usp=sharing
+https://docs.google.com/document/d/12HoYUR2xIl385S2lZjXxbPg81MvmU96Xt4jWaHD5JY4/edit?usp=sharing[REST API basics- CRUD, test & variable.postman_collection.json](https://github.com/Gudogan1202929/inventory-management-
 
-My Collection postman (not all my APIs) :
+My Collection postman (all my APIs) :
 
-https://github.com/Gudogan1202929/inventory-management-system/files/14886875/REST.API.basics-.CRUD.test.variable.postman_collection.json
-
+system/files/14894268/REST.API.basics-.CRUD.test.variable.postman_collection.json)

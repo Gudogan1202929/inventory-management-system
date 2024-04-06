@@ -62,4 +62,5 @@ https://docs.google.com/document/d/12HoYUR2xIl385S2lZjXxbPg81MvmU96Xt4jWaHD5JY4/
 
 My Postman Collection (All mine APIs) : 
 
+[REST API basics- CRUD, test & variable.postman_collection.json](https://github.com/Gudogan1202929/inventory-management-system/files/14894301/REST.API.basics-.CRUD.test.variable.postman_collection.json)
 

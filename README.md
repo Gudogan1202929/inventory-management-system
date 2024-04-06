@@ -1,7 +1,3 @@
-[REST API basics- CRUD, test & variable.postman_collection.json](https://github.com/Gudogan1202929/inventory-management-system/files/14894297/REST.API.basics-.CRUD.test.variable.postman_collection.json)[REST API basics- CRUD, test & variable.postman_collection.json](https://github.com/Gudogan1202929/inventory-management-system/files/14894278/REST.API.basics-.CRUD.test.variable.postman_collection.json)# inventory-management-system
-
-inventory management system for managing the inventory from distributors , suppliers ,orders and items with APIs for controlling all the entities and the relations
-
 invintory mangment system to mange our inventory contain 4 core intities with add APIs to mange it from add, update, delete, retrive and APIs for relations:
 
   Item: 

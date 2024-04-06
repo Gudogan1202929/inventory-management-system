@@ -1,4 +1,4 @@
-[REST API basics- CRUD, test & variable.postman_collection.json](https://github.com/Gudogan1202929/inventory-management-system/files/14894278/REST.API.basics-.CRUD.test.variable.postman_collection.json)# inventory-management-system
+[REST API basics- CRUD, test & variable.postman_collection.json](https://github.com/Gudogan1202929/inventory-management-system/files/14894297/REST.API.basics-.CRUD.test.variable.postman_collection.json)[REST API basics- CRUD, test & variable.postman_collection.json](https://github.com/Gudogan1202929/inventory-management-system/files/14894278/REST.API.basics-.CRUD.test.variable.postman_collection.json)# inventory-management-system
 
 inventory management system for managing the inventory from distributors , suppliers ,orders and items with APIs for controlling all the entities and the relations
 
@@ -53,8 +53,13 @@ SupplyingCompany:
 
 My Swagger 3.1.0 and my designed APIs :
 
-https://app.swaggerhub.com/apis/MOHAMMADNMOSLEH123/inventory-manegment_system_open_api_3_0/1.0.12#/SupplyingCompany/updateSupplyingCompany
+https://app.swaggerhub.com/apis/MOHAMMADNMOSLEH123/inventory-manegment_system_open_api_3_0/1.0.12#/
+
 
 Table for clarify every API on the system and every thing about it :
 
-[Uploading REST API basics- CRUD, test & variable.postman_collection.json…]()
+https://docs.google.com/document/d/12HoYUR2xIl385S2lZjXxbPg81MvmU96Xt4jWaHD5JY4/edit
+
+My Postman Collection (All mine APIs) : 
+
+

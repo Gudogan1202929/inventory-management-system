@@ -1,4 +1,4 @@
-# inventory-management-system
+[REST API basics- CRUD, test & variable.postman_collection.json](https://github.com/Gudogan1202929/inventory-management-system/files/14894278/REST.API.basics-.CRUD.test.variable.postman_collection.json)# inventory-management-system
 
 inventory management system for managing the inventory from distributors , suppliers ,orders and items with APIs for controlling all the entities and the relations
 
@@ -57,8 +57,6 @@ https://app.swaggerhub.com/apis/MOHAMMADNMOSLEH123/inventory-manegment_system_op
 
 Table for clarify every API on the system and every thing about it :
 
-https://docs.google.com/document/d/12HoYUR2xIl385S2lZjXxbPg81MvmU96Xt4jWaHD5JY4/edit?usp=sharing[REST API basics- CRUD, test & variable.postman_collection.json](https://github.com/Gudogan1202929/inventory-management-
+https://docs.google.com/document/d/12HoYUR2xIl385S2lZjXxbPg81MvmU96Xt4jWaHD5JY4/edit?usp=sharing
 
 My Collection postman (all my APIs) :
-
-system/files/14894268/REST.API.basics-.CRUD.test.variable.postman_collection.json)

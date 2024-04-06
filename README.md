@@ -53,7 +53,7 @@ SupplyingCompany:
 
 My Swagger 3.1.0 and my designed APIs :
 
-https://app.swaggerhub.com/apis/MOHAMMADNMOSLEH123/inventory-manegment_system_open_api_3_0/1.0.11#/SupplyingCompany/RetriveSupplyingCompany
+https://app.swaggerhub.com/apis/MOHAMMADNMOSLEH123/inventory-manegment_system_open_api_3_0/1.0.12#/SupplyingCompany/updateSupplyingCompany
 
 Table for clarify every API on the system and every thing about it :
 

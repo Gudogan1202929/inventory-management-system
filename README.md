@@ -44,8 +44,8 @@ SupplyingCompany:
               phoneNumber: Phone number of the supplying company.
               location: Location of the supplying company.
               
+![image](https://github.com/Gudogan1202929/inventory-management-system/assets/106726780/a492bce5-907f-4f84-addf-41b203ca9d20)
 
-![image](https://github.com/Gudogan1202929/inventory-management-system/assets/106726780/57b2c73c-9115-4c8c-a5d8-11c17d48a10e)
 
 My Swagger 3.1.0 and my designed APIs :
 

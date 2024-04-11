@@ -1,5 +1,6 @@
 package com.example.Inventory.servies;
 
+import com.example.Inventory.dto.DistributorsDto;
 import com.example.Inventory.models.Distributors;
 import com.example.Inventory.repo.DistributorsRepo;
 import com.example.Inventory.servies.impl.DistributorsServiceInterface;
@@ -8,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -65,13 +67,13 @@ public class DistributorsServes implements DistributorsServiceInterface {
 
     @Override
     @Transactional
-    public Distributors GetDistributor(int id) throws IllegalStateException{
+    public DistributorsDto GetDistributor(int id) throws IllegalStateException{
         try {
             Distributors distributors = distributorsRepository.findById(id).orElse(null);
             if (distributors == null) {
                 throw new IllegalStateException("Distributor with id " + id + " does not exist");
             }
-            return distributors;
+            return new DistributorsDto(distributors.getId(),distributors.getName(), distributors.getAddress(),distributors.getPhone(),distributors.getEmail());
         }catch (DataAccessException e){
             throw new IllegalStateException("Failed to get distributor", e);
         }
@@ -79,13 +81,24 @@ public class DistributorsServes implements DistributorsServiceInterface {
 
     @Override
     @Transactional
-    public List<Distributors> GetAllDistributors() throws RuntimeException{
+    public List<DistributorsDto> GetAllDistributors() throws RuntimeException {
         try {
-            if (distributorsRepository.findAll().isEmpty()) {
+            List<Distributors> distributorsList = distributorsRepository.findAll();
+            if (distributorsList.isEmpty()) {
                 throw new RuntimeException("No distributors found");
             }
-            return distributorsRepository.findAll();
-        }catch (DataAccessException e){
+            List<DistributorsDto> distributorsDtoList = new ArrayList<>();
+            for (Distributors distributor : distributorsList) {
+                DistributorsDto dto = new DistributorsDto();
+                dto.setId(distributor.getId());
+                dto.setName(distributor.getName());
+                dto.setAddress(distributor.getAddress());
+                dto.setPhone(distributor.getPhone());
+                dto.setEmail(distributor.getEmail());
+                distributorsDtoList.add(dto);
+            }
+            return distributorsDtoList;
+        } catch (DataAccessException e) {
             throw new RuntimeException("Failed to get all distributors", e);
         }
     }

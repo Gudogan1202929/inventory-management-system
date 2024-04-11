@@ -1,5 +1,6 @@
 package com.example.Inventory.servies.impl;
 
+import com.example.Inventory.dto.OrderDto;
 import com.example.Inventory.models.Distributors;
 import com.example.Inventory.models.Item;
 import com.example.Inventory.models.Order;
@@ -16,9 +17,9 @@ public interface OrderServiceInterface {
 
     void UpdateOrder(Order order) throws IllegalStateException;
 
-    Order GetOrder(int id) throws IllegalStateException;
+    OrderDto GetOrder(int id) throws IllegalStateException;
 
-    List<Order> GetAllOrder() throws RuntimeException;
+    List<OrderDto> GetAllOrder() throws RuntimeException;
 
     void setItemInOrder (int orderId , int itemId, int quantity) throws IllegalStateException;
 

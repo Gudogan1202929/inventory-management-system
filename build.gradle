@@ -27,7 +27,8 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa:3.2.2'
 	implementation 'org.springframework:spring-context:6.1.4'
 	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-validation', version: '3.2.0'
-	implementation group: 'org.springdoc', name: 'springdoc-openapi-starter-webmvc-ui', version: '2.4.0'}
+	implementation group: 'org.springdoc', name: 'springdoc-openapi-starter-webmvc-ui', version: '2.4.0'
+	implementation group: 'com.squareup.retrofit2', name: 'converter-gson', version: '2.9.0'}
 
 
 tasks.named('test') {

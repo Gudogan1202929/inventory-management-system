@@ -1,5 +1,6 @@
 package com.example.Inventory.repo;
 
+import com.example.Inventory.dto.DistributorsDto;
 import com.example.Inventory.models.Distributors;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

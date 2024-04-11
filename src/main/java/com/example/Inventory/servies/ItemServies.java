@@ -1,6 +1,8 @@
 package com.example.Inventory.servies;
 
+import com.example.Inventory.dto.ItemDto;
 import com.example.Inventory.models.Item;
+import com.example.Inventory.models.ItemsOrder;
 import com.example.Inventory.models.Order;
 import com.example.Inventory.models.SupplyingCompany;
 import com.example.Inventory.repo.ItemRepo;
@@ -12,6 +14,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 @Service
@@ -73,13 +77,14 @@ public class ItemServies implements ItemServiceInterface {
 
     @Override
     @Transactional
-    public Item GetItem(int id) throws IllegalStateException{
+    public ItemDto GetItem(int id) throws IllegalStateException{
         try {
             Item item = itemRepo.findById(id).orElse(null);
             if (item == null) {
                 throw new IllegalStateException("Item with id " + id + " does not exist");
             }
-            return item;
+            return new ItemDto(item.getId(),item.getName(),item.getQuantity(),item.getPrice(),
+            item.getSupplyingCompany());
         }catch (DataAccessException e) {
             throw new IllegalStateException("Error : " + e.getMessage());
         }
@@ -87,16 +92,28 @@ public class ItemServies implements ItemServiceInterface {
 
     @Override
     @Transactional
-    public List<Item> GetAllItem() throws RuntimeException{
+    public List<ItemDto> GetAllItem() throws RuntimeException {
         try {
-            if (itemRepo.findAll().isEmpty()) {
+            List<Item> itemList = itemRepo.findAll();
+            if (itemList.isEmpty()) {
                 throw new RuntimeException("No Item found");
             }
-            return itemRepo.findAll();
-        }catch (DataAccessException e) {
+            List<ItemDto> itemDtoList = new LinkedList<>();
+            for (Item item : itemList) {
+                ItemDto dto = new ItemDto();
+                dto.setId(item.getId());
+                dto.setName(item.getName());
+                dto.setQuantity(item.getQuantity());
+                dto.setPrice(item.getPrice());
+                dto.setSupplyingCompany(item.getSupplyingCompany());
+                itemDtoList.add(dto);
+            }
+            return itemDtoList;
+        } catch (DataAccessException e) {
             throw new RuntimeException("Error : " + e.getMessage());
         }
     }
+
 
     @Override
     @Transactional

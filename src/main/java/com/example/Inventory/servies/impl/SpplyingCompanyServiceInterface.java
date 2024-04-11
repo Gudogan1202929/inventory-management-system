@@ -1,5 +1,6 @@
 package com.example.Inventory.servies.impl;
 
+import com.example.Inventory.dto.SupplyingCompanyDto;
 import com.example.Inventory.models.SupplyingCompany;
 import jakarta.transaction.Transactional;
 import org.springframework.dao.DataAccessException;
@@ -14,7 +15,7 @@ public interface SpplyingCompanyServiceInterface {
 
     void UpdateSupplyingCompany(SupplyingCompany supplyingCompany) throws IllegalStateException;
 
-    SupplyingCompany GetSupplyingCompany(int id) throws IllegalStateException;
+    SupplyingCompanyDto GetSupplyingCompany(int id) throws IllegalStateException;
 
-    List<SupplyingCompany> GetAllSupplyingCompany() throws RuntimeException;
+    List<SupplyingCompanyDto> GetAllSupplyingCompany() throws RuntimeException;
 }

@@ -1,5 +1,6 @@
 package com.example.Inventory.controller;
 
+import com.example.Inventory.dto.ItemDto;
 import com.example.Inventory.models.Item;
 import com.example.Inventory.servies.impl.ItemServiceInterface;
 import com.example.Inventory.servies.impl.OrderServiceInterface;
@@ -24,8 +25,7 @@ public class ItemController {
     @GetMapping("/retrive")
     public ResponseEntity<?> retrieveItem() {
         try {
-            List<Item> items = itemServices.GetAllItem();
-            return ResponseEntity.ok().body(items);
+            return ResponseEntity.ok().body(itemServices.GetAllItem());
         } catch (Exception e) {
             return ResponseEntity.badRequest().body("An error occurred: " + e.getMessage());
         }
@@ -64,8 +64,7 @@ public class ItemController {
     @GetMapping("/retrive/{itemId}")
     public ResponseEntity<?> retrieveItemById(@PathVariable(required = true) int itemId) {
         try {
-            Item item = itemServices.GetItem(itemId);
-            return ResponseEntity.ok().body(item);
+            return ResponseEntity.ok().body(itemServices.GetItem(itemId));
         } catch (Exception e) {
             return ResponseEntity.badRequest().body("An error occurred: " + e.getMessage());
         }

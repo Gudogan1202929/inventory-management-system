@@ -29,7 +29,7 @@ public class Order {
     private OrderStatus status;
 
     @JsonIgnore
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     private Distributors distributors;
 
     @JsonIgnore

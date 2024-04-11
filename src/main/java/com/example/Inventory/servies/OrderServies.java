@@ -1,5 +1,6 @@
 package com.example.Inventory.servies;
 
+import com.example.Inventory.dto.OrderDto;
 import com.example.Inventory.models.Distributors;
 import com.example.Inventory.models.Item;
 import com.example.Inventory.models.ItemsOrder;
@@ -16,6 +17,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
+import java.util.LinkedList;
 import java.util.List;
 
 @Service
@@ -41,6 +44,7 @@ public class OrderServies implements OrderServiceInterface {
         this.itemService = itemService;
     }
 
+    @Override
     @Transactional
     public void AddNewOrder(Order order) throws RuntimeException{
         try {
@@ -50,6 +54,7 @@ public class OrderServies implements OrderServiceInterface {
         }
     }
 
+    @Override
     @Transactional
     public void DeleteOrder(int id) throws IllegalStateException{
         Order exists = orderRepo.findById(id).orElse(null);
@@ -66,6 +71,7 @@ public class OrderServies implements OrderServiceInterface {
         orderRepo.deleteById(id);
     }
 
+    @Override
     @Transactional
     public void UpdateOrder(Order order) throws IllegalStateException{
         Order orderFound = orderRepo.findById(order.getId()).orElse(null);
@@ -75,23 +81,42 @@ public class OrderServies implements OrderServiceInterface {
         orderRepo.save(order);
     }
 
+    @Override
     @Transactional
-    public Order GetOrder(int id) throws IllegalStateException{
+    public OrderDto GetOrder(int id) throws IllegalStateException{
         Order order = orderRepo.findById(id).orElse(null);
         if (order == null) {
             throw new IllegalStateException("Order with id " + id + " does not exist");
         }
-        return order;
+        return new OrderDto(order.getId(),order.getStatus(),order.getDistributors(),
+                order.getItem(),order.getDate());
     }
 
+    @Override
     @Transactional
-    public List<Order> GetAllOrder() throws RuntimeException{
-        if (orderRepo.findAll().isEmpty()) {
-            throw new RuntimeException("No Order found");
+    public List<OrderDto> GetAllOrder() throws RuntimeException {
+        try {
+            List<Order> orderList = orderRepo.findAll();
+            if (orderList.isEmpty()) {
+                throw new RuntimeException("No Order found");
+            }
+            List<OrderDto> orderDtoList = new LinkedList<>();
+            for (Order order : orderList) {
+                OrderDto dto = new OrderDto();
+                dto.setId(order.getId());
+                dto.setStatus(order.getStatus());
+                dto.setDistributors(order.getDistributors());
+                dto.setItem(order.getItem());
+                dto.setDate(order.getDate());
+                orderDtoList.add(dto);
+            }
+            return orderDtoList;
+        } catch (DataAccessException e) {
+            throw new RuntimeException("Error : " + e.getMessage());
         }
-        return orderRepo.findAll();
     }
 
+    @Override
     @Transactional
     public void setItemInOrder (int orderId , int itemId ,int quantity) throws IllegalStateException{
         Order order = orderRepo.findById(orderId).orElse(null);
@@ -111,6 +136,7 @@ public class OrderServies implements OrderServiceInterface {
         itemsOrderRepo.save(itemsOrder);
     }
 
+    @Override
     @Transactional
     public void setDistributorInOrder(int orderId , int distributorId) throws IllegalStateException{
         Order order = orderRepo.findById(orderId).orElse(null);

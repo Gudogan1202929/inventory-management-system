@@ -39,6 +39,7 @@ public class SupplyingCompany {
             nullable = false)
     private String email;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "supplyingCompany" ,cascade = CascadeType.PERSIST)
     private List<Item> items = new ArrayList<>();
 

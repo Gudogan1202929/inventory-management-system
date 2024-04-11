@@ -1,5 +1,6 @@
 package com.example.Inventory.servies.impl;
 
+import com.example.Inventory.dto.DistributorsDto;
 import com.example.Inventory.models.Distributors;
 
 import java.util.List;
@@ -13,7 +14,7 @@ public interface DistributorsServiceInterface {
 
     void UpdateDistributor(Distributors distributors) throws IllegalStateException;
 
-    Distributors GetDistributor(int id) throws IllegalStateException;
+    DistributorsDto GetDistributor(int id) throws IllegalStateException;
 
-    List<Distributors> GetAllDistributors() throws RuntimeException;
+    List<DistributorsDto> GetAllDistributors() throws RuntimeException;
 }

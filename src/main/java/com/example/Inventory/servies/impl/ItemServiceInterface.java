@@ -1,5 +1,6 @@
 package com.example.Inventory.servies.impl;
 
+import com.example.Inventory.dto.ItemDto;
 import com.example.Inventory.models.Item;
 import com.example.Inventory.models.SupplyingCompany;
 import jakarta.transaction.Transactional;
@@ -17,9 +18,9 @@ public interface ItemServiceInterface {
 
     void UpdateItem(Item item) throws IllegalStateException;
 
-    Item GetItem(int id) throws IllegalStateException;
+    ItemDto GetItem(int id) throws IllegalStateException;
 
-    public List<Item> GetAllItem() throws RuntimeException;
+    List<ItemDto> GetAllItem() throws RuntimeException;
 
-    public void supplyedBy( int ItemId ,int SupplyerId) throws IllegalStateException;
+    void supplyedBy( int ItemId ,int SupplyerId) throws IllegalStateException;
 }

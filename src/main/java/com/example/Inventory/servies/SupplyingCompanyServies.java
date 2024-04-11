@@ -1,5 +1,6 @@
 package com.example.Inventory.servies;
 
+import com.example.Inventory.dto.SupplyingCompanyDto;
 import com.example.Inventory.models.Item;
 import com.example.Inventory.models.Order;
 import com.example.Inventory.models.SupplyingCompany;
@@ -12,6 +13,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 @Service
@@ -69,13 +72,15 @@ public class SupplyingCompanyServies implements SpplyingCompanyServiceInterface 
 
     @Override
     @Transactional
-    public SupplyingCompany GetSupplyingCompany(int id) throws IllegalStateException{
+    public SupplyingCompanyDto GetSupplyingCompany(int id) throws IllegalStateException{
         try {
             SupplyingCompany supplyingCompany = supplyingCompanyRepo.findById(id).orElse(null);
             if (supplyingCompany == null) {
                 throw new IllegalStateException("supplying Company with id " + id + " does not exist");
             }
-            return supplyingCompany;
+            return new SupplyingCompanyDto(supplyingCompany.getId(),supplyingCompany.getCompanyName(),
+                    supplyingCompany.getPhoneNumber(),supplyingCompany.getLocation(),supplyingCompany.getEmail(),
+                    supplyingCompany.getItems());
         }catch (DataAccessException e) {
             throw new IllegalStateException("Error : " + e.getMessage());
         }
@@ -83,13 +88,26 @@ public class SupplyingCompanyServies implements SpplyingCompanyServiceInterface 
 
     @Override
     @Transactional
-    public List<SupplyingCompany> GetAllSupplyingCompany() throws RuntimeException{
+    public List<SupplyingCompanyDto> GetAllSupplyingCompany() throws RuntimeException {
         try {
-            if (supplyingCompanyRepo.findAll().isEmpty()) {
+            List<SupplyingCompany> supplyingCompanyList = supplyingCompanyRepo.findAll();
+            if (supplyingCompanyList.isEmpty()) {
                 throw new RuntimeException("No supplying Company found");
             }
-            return supplyingCompanyRepo.findAll();
-        }catch (DataAccessException e) {
+
+            List<SupplyingCompanyDto> supplyingCompanyDtoList = new LinkedList<>();
+            for (SupplyingCompany supplyingCompany : supplyingCompanyList) {
+                SupplyingCompanyDto dto = new SupplyingCompanyDto();
+                dto.setId(supplyingCompany.getId());
+                dto.setCompanyName(supplyingCompany.getCompanyName());
+                dto.setPhoneNumber(supplyingCompany.getPhoneNumber());
+                dto.setLocation(supplyingCompany.getLocation());
+                dto.setEmail(supplyingCompany.getEmail());
+                dto.setItems(supplyingCompany.getItems());
+                supplyingCompanyDtoList.add(dto);
+            }
+            return supplyingCompanyDtoList;
+        } catch (DataAccessException e) {
             throw new RuntimeException("Error : " + e.getMessage());
         }
     }

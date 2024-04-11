@@ -38,7 +38,7 @@ public class Item {
     @OneToMany(mappedBy = "item" ,cascade = CascadeType.PERSIST)
     private List<ItemsOrder> ItemsOrder = new ArrayList<>();
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "supplying_company_fk", referencedColumnName = "id")
     @JsonIgnore
     private SupplyingCompany supplyingCompany;

@@ -1,7 +1,3 @@
-# inventory-management-system
-
-inventory management system for managing the inventory from distributors , suppliers ,orders and items with APIs for controlling all the entities and the relations
-
 invintory mangment system to mange our inventory contain 4 core intities with add APIs to mange it from add, update, delete, retrive and APIs for relations:
 
   Item: 
@@ -48,18 +44,19 @@ SupplyingCompany:
               phoneNumber: Phone number of the supplying company.
               location: Location of the supplying company.
               
+![image](https://github.com/Gudogan1202929/inventory-management-system/assets/106726780/a492bce5-907f-4f84-addf-41b203ca9d20)
 
-![image](https://github.com/Gudogan1202929/inventory-management-system/assets/106726780/57b2c73c-9115-4c8c-a5d8-11c17d48a10e)
 
 My Swagger 3.1.0 and my designed APIs :
 
-https://app.swaggerhub.com/apis/MOHAMMADNMOSLEH123/inventory-manegment_system_open_api_3_0/1.0.11-oas3.1#/
+https://app.swaggerhub.com/apis/MOHAMMADNMOSLEH123/inventory-manegment_system_open_api_3_0/1.0.12#/
+
 
 Table for clarify every API on the system and every thing about it :
 
-https://docs.google.com/document/d/12HoYUR2xIl385S2lZjXxbPg81MvmU96Xt4jWaHD5JY4/edit?usp=sharing
+https://docs.google.com/document/d/12HoYUR2xIl385S2lZjXxbPg81MvmU96Xt4jWaHD5JY4/edit
 
-My Collection postman (not all my APIs) :
+My Postman Collection (All mine APIs) : 
 
-https://github.com/Gudogan1202929/inventory-management-system/files/14886875/REST.API.basics-.CRUD.test.variable.postman_collection.json
+[REST API basics- CRUD, test & variable.postman_collection.json](https://github.com/Gudogan1202929/inventory-management-system/files/14894301/REST.API.basics-.CRUD.test.variable.postman_collection.json)
 

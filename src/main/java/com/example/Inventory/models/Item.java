@@ -34,17 +34,11 @@ public class Item {
             columnDefinition = "Integer",
             nullable = false)
     private double price;
-
     @JsonIgnore
-    @ManyToMany
-    @JoinTable(
-            name = "items_orders",
-            joinColumns = @JoinColumn(name = "item_id"),
-            inverseJoinColumns = @JoinColumn(name = "order_id")
-    )
-    private List<Order> orders = new ArrayList<>();
+    @OneToMany(mappedBy = "item" ,cascade = CascadeType.PERSIST)
+    private List<ItemsOrder> ItemsOrder = new ArrayList<>();
 
-    @ManyToOne(fetch = FetchType.LAZY, targetEntity = SupplyingCompany.class, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "supplying_company_fk", referencedColumnName = "id")
     @JsonIgnore
     private SupplyingCompany supplyingCompany;
@@ -65,12 +59,12 @@ public class Item {
     public Item() {
     }
 
-    public Item(int id, String name, int quantity, double price, List<Order> orders, SupplyingCompany supplyingCompany) {
+    public Item(int id, String name, int quantity, double price, List<ItemsOrder> ItemsOrder, SupplyingCompany supplyingCompany) {
         this.id = id;
         this.name = name;
         this.quantity = quantity;
         this.price = price;
-        this.orders = orders;
+        this.ItemsOrder = ItemsOrder;
         this.supplyingCompany = supplyingCompany;
     }
 
@@ -106,12 +100,12 @@ public class Item {
         this.price = price;
     }
 
-    public List<Order> getOrders() {
-        return orders;
+    public List<ItemsOrder> getOrders() {
+        return ItemsOrder;
     }
 
-    public void setOrders(List<Order> orders) {
-        this.orders = orders;
+    public void setOrders(List<ItemsOrder> ItemsOrder) {
+        this.ItemsOrder = ItemsOrder;
     }
 
     public SupplyingCompany getSupplyingCompany() {

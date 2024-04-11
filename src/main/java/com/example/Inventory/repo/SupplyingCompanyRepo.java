@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface SupplyingCompanyRepo extends JpaRepository<SupplyingCompany, Integer> {
+    SupplyingCompany findByCompanyName(String companyName);
 }

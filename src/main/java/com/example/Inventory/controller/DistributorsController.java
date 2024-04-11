@@ -1,7 +1,7 @@
 package com.example.Inventory.controller;
 
 import com.example.Inventory.models.Distributors;
-import com.example.Inventory.servies.DistributorsServies;
+import com.example.Inventory.servies.impl.DistributorsServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -10,18 +10,16 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/distributors")
 public class DistributorsController {
-
-    private final DistributorsServies distributorsServies;
-
+    private final DistributorsServiceInterface distributorsServes;
     @Autowired
-    public DistributorsController(DistributorsServies distributorsServies) {
-        this.distributorsServies = distributorsServies;
+    public DistributorsController(DistributorsServiceInterface distributorsServices) {
+        this.distributorsServes = distributorsServices;
     }
 
     @GetMapping("/retrive")
     public ResponseEntity<?> retriveDistributors() {
         try {
-            return ResponseEntity.ok().body(distributorsServies.GetAllDistributors());
+            return ResponseEntity.ok().body(distributorsServes.GetAllDistributors());
         } catch (Exception e) {
             return ResponseEntity.badRequest().body("Error: " + e.getMessage());
         }
@@ -30,7 +28,7 @@ public class DistributorsController {
     @GetMapping("/retrive/{id}")
     public ResponseEntity<?> retriveDistributorsById(@PathVariable(required = true) int id) {
         try {
-            return ResponseEntity.ok().body(distributorsServies.GetDistributor(id));
+            return ResponseEntity.ok().body(distributorsServes.GetDistributor(id));
         } catch (Exception e) {
             return ResponseEntity.badRequest().body("Error: " + e.getMessage());
         }
@@ -39,8 +37,8 @@ public class DistributorsController {
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<?> deleteDistributorsById(@PathVariable(required = true) int id) {
         try {
-            distributorsServies.DeleteDistributor(id);
-            return ResponseEntity.status(HttpStatus.NO_CONTENT).body("Distributor with id " + id + " deleted successfully");
+            distributorsServes.DeleteDistributor(id);
+            return ResponseEntity.ok().body("Distributor deleted successfully");
         } catch (Exception e) {
             return ResponseEntity.badRequest().body("Error: " + e.getMessage());
         }
@@ -49,7 +47,7 @@ public class DistributorsController {
     @PutMapping("/update")
     public ResponseEntity<?> updateDistributors(@RequestBody Distributors distributor) {
         try {
-            distributorsServies.UpdateDistributor(distributor);
+            distributorsServes.UpdateDistributor(distributor);
             return ResponseEntity.ok().body("Distributor updated successfully");
         } catch (Exception e) {
             return ResponseEntity.badRequest().body("Error: " + e.getMessage());
@@ -59,13 +57,10 @@ public class DistributorsController {
     @PostMapping("/add")
     public ResponseEntity<?> addDistributors(@RequestBody Distributors distributor) {
         try {
-            System.out.println(distributor.toString());
-            distributorsServies.AddNewDistributor(distributor);
+            distributorsServes.AddNewDistributor(distributor);
             return ResponseEntity.status(HttpStatus.CREATED).body("Distributor added successfully");
         } catch (Exception e) {
             return ResponseEntity.badRequest().body("Error: " + e.getMessage());
         }
     }
-
-
 }

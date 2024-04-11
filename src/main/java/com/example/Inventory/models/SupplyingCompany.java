@@ -39,7 +39,7 @@ public class SupplyingCompany {
             nullable = false)
     private String email;
 
-    @OneToMany(mappedBy = "supplyingCompany" ,cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "supplyingCompany" ,cascade = CascadeType.PERSIST)
     private List<Item> items = new ArrayList<>();
 
     public SupplyingCompany(String companyName, String phoneNumber, String location, String email) {

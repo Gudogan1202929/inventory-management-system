@@ -32,31 +32,30 @@ public class Order {
     @ManyToOne(fetch = FetchType.LAZY)
     private Distributors distributors;
 
-    @ManyToMany(mappedBy = "orders")
-    private List<Item> item = new ArrayList<>();
+    @JsonIgnore
+    @OneToMany(mappedBy = "order" ,cascade = CascadeType.PERSIST)
+    private List<ItemsOrder> ItemsOrder = new ArrayList<>();
 
     @Column(name = "date",
             columnDefinition = "DATE",
             nullable = false)
-    Date date = new Date();
-
-
+    private Date date = new Date();
 
     public Order() {
     }
 
-    public Order(int id,OrderStatus status, List<Item> item, Date date) {
+    public Order(int id,OrderStatus status, List<ItemsOrder> ItemsOrder, Date date) {
         this.id = id;
         this.status = status;
-        this.item = item;
+        this.ItemsOrder = ItemsOrder;
         this.date = date;
     }
 
-    public Order(int id, OrderStatus status, Distributors distributors, List<Item> item, Date date) {
+    public Order(int id, OrderStatus status, Distributors distributors, List<ItemsOrder> ItemsOrder, Date date) {
         this.id = id;
         this.status = status;
         this.distributors = distributors;
-        this.item = item;
+        this.ItemsOrder = ItemsOrder;
         this.date = date;
     }
 
@@ -87,12 +86,12 @@ public class Order {
         this.status = status;
     }
 
-    public List<Item> getItem() {
-        return item;
+    public List<ItemsOrder> getItem() {
+        return ItemsOrder;
     }
 
-    public void setItem(List<Item> item) {
-        this.item = item;
+    public void setItem(List<ItemsOrder> ItemsOrder) {
+        this.ItemsOrder = ItemsOrder;
     }
 
     public Date getDate() {
@@ -116,7 +115,7 @@ public class Order {
         return "Order{" +
                 "id=" + id +
                 ", status=" + status +
-                ", item=" + item +
+                ", item=" + ItemsOrder +
                 ", date=" + date +
                 '}';
     }

@@ -1,7 +1,7 @@
 invintory mangment system to mange our inventory contain 4 core intities with add APIs to mange it from add, update, delete, retrive and APIs for relations:
 
   Item: 
-        Represents an item in the inventory.
+        Represents an item in the inventory
           Attributes:
               id: Unique identifier for the item.
               name: Name of the item.
@@ -12,7 +12,7 @@ invintory mangment system to mange our inventory contain 4 core intities with ad
               Many-to-One with SupplyingCompany: Each item is supplied by a single supplying company.
               
 Distributors : 
-      Represents a distributor.
+      Represents a distributor
           Attributes:
               id: Unique identifier for the distributor.
               name: Name of the distributor.
@@ -24,7 +24,7 @@ Distributors :
 
       
 Order :
-      Represents an order placed by a distributor.
+      Represents an order placed by a distributor
         Attributes:
               id: Unique identifier for the order.
               status: Current status of the order (Pending, Shipped, Delivered).

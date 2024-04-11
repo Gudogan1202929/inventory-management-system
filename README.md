@@ -1,7 +1,7 @@
 invintory mangment system to mange our inventory contain 4 core intities with add APIs to mange it from add, update, delete, retrive and APIs for relations:
 
   Item: 
-        Represents an item in the inventory.
+        Represents an item in the inventory
           Attributes:
               id: Unique identifier for the item.
               name: Name of the item.
@@ -12,7 +12,7 @@ invintory mangment system to mange our inventory contain 4 core intities with ad
               Many-to-One with SupplyingCompany: Each item is supplied by a single supplying company.
               
 Distributors : 
-      Represents a distributor.
+      Represents a distributor
           Attributes:
               id: Unique identifier for the distributor.
               name: Name of the distributor.
@@ -24,7 +24,7 @@ Distributors :
 
       
 Order :
-      Represents an order placed by a distributor.
+      Represents an order placed by a distributor
         Attributes:
               id: Unique identifier for the order.
               status: Current status of the order (Pending, Shipped, Delivered).
@@ -49,8 +49,7 @@ SupplyingCompany:
 
 My Swagger 3.1.0 and my designed APIs :
 
-https://app.swaggerhub.com/apis/MOHAMMADNMOSLEH123/inventory-manegment_system_open_api_3_0/1.0.12#/
-
+https://app.swaggerhub.com/apis/MOHAMMADNMOSLEH123/inventory-manegment_system_open_api_3_0/1.0.13
 
 Table for clarify every API on the system and every thing about it :
 
@@ -58,5 +57,4 @@ https://docs.google.com/document/d/12HoYUR2xIl385S2lZjXxbPg81MvmU96Xt4jWaHD5JY4/
 
 My Postman Collection (All mine APIs) : 
 
-[REST API basics- CRUD, test & variable.postman_collection.json](https://github.com/Gudogan1202929/inventory-management-system/files/14894301/REST.API.basics-.CRUD.test.variable.postman_collection.json)
-
+[REST API basics- CRUD, test & variable.postman_collection.json](https://github.com/Gudogan1202929/inventory-management-system/files/14949328/REST.API.basics-.CRUD.test.variable.postman_collection.json)
